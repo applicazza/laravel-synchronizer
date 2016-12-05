@@ -40,6 +40,7 @@ class ScheduleSynchronization extends Command
         $synchronizations = Entities\Synchronization::query()
             ->notQueued()
             ->notProcessing()
+            ->notPaused()
             ->processable()
             ->get();
 

@@ -129,6 +129,24 @@ class Synchronization extends Model
     }
 
     /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePaused(Builder $query)
+    {
+        return $query->where('is_paused', '=', true);
+    }
+
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeNotPaused(Builder $query)
+    {
+        return $query->where('is_paused', '=', false);
+    }
+
+    /**
      * @param bool $save
      */
     public function start($save = true)
