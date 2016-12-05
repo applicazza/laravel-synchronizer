@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Synchronization
+ * @package Applicazza\LaravelSynchronizer\Entities
+ */
 class Synchronization extends Model
 {
     use SoftDeletes;

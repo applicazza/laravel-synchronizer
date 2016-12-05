@@ -50,6 +50,7 @@ class AddSynchronization extends Command
         $synchronization = new Entities\Synchronization;
 
         $synchronization->synchronizable()->associate($object);
+        $synchronization->entity = $this->argument('entity');
         $synchronization->interval = $this->option('interval');
         $synchronization->save();
     }
