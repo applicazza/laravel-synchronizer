@@ -15,18 +15,16 @@ class CreateSynchronizationsTable extends Migration
         Schema::create('synchronizations', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('synchronizable_id');
-            $table->string('synchronizable_type');
-            $table->string('entity');
+            $table->string('synchronizable_id')->index();
+            $table->string('synchronizable_type')->index();
+            $table->string('entity')->index();
             $table->integer('interval')->default(60);
             $table->boolean('is_queued')->default(false);
             $table->boolean('is_processing')->default(false);
             $table->timestamp('processed_at')->nullable();
-            $table->timestamp('processable_after')->nullable()->generated('(coalesce(`processed_at`,"1970-01-01 00:00:01") + interval `interval` second)');
+            $table->timestamp('processable_after')->nullable()->generated('(coalesce(`processed_at`,"1970-01-01 00:00:01") + interval `interval` second)')->index();
             $table->softDeletes();
             $table->timestamps();
-
-            $table->unique(['synchronizable_id', 'synchronizable_type', 'entity'], 'synchronizations_unique');
         });
     }
 
