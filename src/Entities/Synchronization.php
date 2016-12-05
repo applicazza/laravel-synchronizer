@@ -28,6 +28,13 @@ class Synchronization extends Model
 
     ];
 
+    protected $fillable = [
+
+        'entity',
+        'interval'
+
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */

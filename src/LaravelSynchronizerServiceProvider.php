@@ -23,6 +23,8 @@ class LaravelSynchronizerServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/synchronizer.php', 'synchronizer');
 
         $this->registerCommands();
+
+        $this->registerObjects();
     }
 
     protected function registerCommands()
@@ -40,5 +42,10 @@ class LaravelSynchronizerServiceProvider extends ServiceProvider
         });
 
         $this->commands('command.synchronizer.add', 'command.synchronizer.synchronize');
+    }
+
+    protected function registerObjects()
+    {
+        $this->app->singleton('synchronizer', new Synchronizer);
     }
 }

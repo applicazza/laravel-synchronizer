@@ -47,11 +47,9 @@ class AddSynchronization extends Command
         if (!$object)
             return $this->error('Entity was not found in database');
 
-        $synchronization = new Entities\Synchronization;
+        $synchronization = app()->make('synchronizer')->add($object, $this->argument('entity'), $this->option('interval'));
 
-        $synchronization->synchronizable()->associate($object);
-        $synchronization->entity = $this->argument('entity');
-        $synchronization->interval = $this->option('interval');
-        $synchronization->save();
+        if ($synchronization)
+            $this->info(sprintf('Added synchronization with id %s', $synchronization->id));
     }
 }
