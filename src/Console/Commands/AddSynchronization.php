@@ -37,7 +37,7 @@ class AddSynchronization extends Command
      */
     public function handle()
     {
-        $class = config("synchronizer.synchronizations.{$this->argument('entity')}");
+        $class = config("synchronizer.synchronizations.{$this->argument('entity')}.model");
 
         if (!class_exists($class))
             return $this->error('Entity is not mapped in synchronizer configuration file');

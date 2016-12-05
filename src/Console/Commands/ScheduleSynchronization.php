@@ -45,7 +45,7 @@ class ScheduleSynchronization extends Command
 
         foreach ($synchronizations as $synchronization) {
 
-            $class = config("synchronizer.synchronizations.{$synchronization->entity}");
+            $class = config("synchronizer.synchronizations.{$synchronization->entity}.job");
 
             if (class_exists($class)) {
 

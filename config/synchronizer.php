@@ -4,7 +4,13 @@ return [
 
     'synchronizations' => [
 
-        // 'entity_name' => 'App\Entities\EntityClass',
+        /*'entity_name' => [
+
+            'job' => 'App\Jobs\JobClass',
+
+            'model' => 'App\Entities\EntityClass',
+
+        ],*/
 
     ]
 
