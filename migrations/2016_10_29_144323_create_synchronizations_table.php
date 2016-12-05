@@ -22,7 +22,7 @@ class CreateSynchronizationsTable extends Migration
             $table->boolean('is_queued')->default(false);
             $table->boolean('is_processing')->default(false);
             $table->timestamp('processed_at')->nullable();
-            $table->timestamp('processable_after')->nullable()->storeAs('(coalesce(`processed_at`,"1970-01-01 00:00:01") + interval `interval` second)')->index();
+            $table->timestamp('processable_after')->nullable()->storedAs('(coalesce(`processed_at`,"1970-01-01 00:00:01") + interval `interval` second)')->index();
             $table->softDeletes();
             $table->timestamps();
         });
