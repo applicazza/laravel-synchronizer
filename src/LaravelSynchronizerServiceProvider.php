@@ -46,6 +46,6 @@ class LaravelSynchronizerServiceProvider extends ServiceProvider
 
     protected function registerObjects()
     {
-        $this->app->singleton('synchronizer', new Synchronizer);
+        $this->app->singleton('synchronizer', Synchronizer::class);
     }
 }
