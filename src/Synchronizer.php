@@ -32,4 +32,19 @@ class Synchronizer
 
         return $synchronization;
     }
+
+    /**
+     * @param Model $synchronizable
+     * @param string $entity
+     * @return bool
+     */
+    public function remove(Model $synchronizable, string $entity) : boolean
+    {
+        $synchronization = $synchronizable->synchronizationForEntity($entity);
+
+        if ($synchronization)
+            return $synchronization->delete();
+
+        return false;
+    }
 }

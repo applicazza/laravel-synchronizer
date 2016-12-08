@@ -17,4 +17,13 @@ trait Synchronizable
     {
         return $this->morphMany(Synchronization::class, 'synchronizable');
     }
+
+    /**
+     * @param string $entity
+     * @return mixed
+     */
+    public function synchronizationForEntity(string $entity)
+    {
+        return $this->synchronizations()->where('entity', '=', $entity)->first();
+    }
 }
